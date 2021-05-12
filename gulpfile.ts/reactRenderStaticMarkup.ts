@@ -1,12 +1,14 @@
-const gulp = require('gulp');
-const ts = require('gulp-typescript');
-const path = require('path');
-const through = require("through2");
-const gutil = require('gulp-util');
+import gulp from 'gulp';
+import ts from 'gulp-typescript';
+import path from 'path';
+import through from "through2";
+import gutil from 'gulp-util';
+// import React from "react";
+// import ReactDom from "react-dom/server";
 
 const tsProject = ts.createProject(path.resolve(process.cwd(), 'tsconfig.json'));
 
-reactRenderStaticMarkup = (done) => {
+const reactRenderStaticMarkup = (done: () => void) => {
   gulp
     .src('src/pages/**/*.tsx')
     .pipe(tsProject())
@@ -19,12 +21,11 @@ reactRenderStaticMarkup = (done) => {
 
       //ファイルの中身がBufferとしてわたってきた場合
       if (file.isBuffer()) {
+        //現在処理しているfileのpath
+        const modulePath = path.resolve(process.cwd(), file.path);
+        //現在処理しているfileのext(拡張子)
+        const moduleExt = path.extname(modulePath);
         try {
-          //現在処理しているfileのpath
-          const modulePath = path.resolve(process.cwd(), file.path);
-          //現在処理しているfileのext(拡張子)
-          const moduleExt = path.extname(modulePath);
-
           //拡張子を.htmlに変換する
           file.path = file.path.replace(new RegExp(`${moduleExt}$`), '.html');
 

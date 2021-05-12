@@ -1,9 +1,11 @@
 import React from "react";
+import {Layout} from "../layouts/Layout";
 
-const IndexPage: React.VFC = () => {
+export default function () {
   return (
-    <div>
+    <Layout>
+      <h1>タイトル</h1>
       ハロー
-    </div>
+    </Layout>
   )
 }
