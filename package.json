@@ -1,0 +1,18 @@
+{
+  "name": "gulp-react-static-generate",
+  "version": "1.0.0",
+  "description": "",
+  "license": "MIT",
+  "author": "hisho",
+  "scripts": {
+    "start": "run-s gulp-render-react gulp-watch",
+    "build": "run-p gulp-render-react",
+    "gulp-render-react": "gulp renderReact",
+    "gulp-watch": "gulp watch"
+  },
+  "devDependencies": {
+    "@types/node": "^15.0.2",
+    "gulp": "^4.0.2",
+    "npm-run-all": "^4.1.5"
+  }
+}
